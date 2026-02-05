@@ -56,7 +56,7 @@ function searchInsert(arr, t) {
 }
 
 
-console.log(searchInsert([1, 3, 4, 6], 7));
+// console.log(searchInsert([1, 3, 4, 6], 7));
 
 
 // Description:
@@ -571,9 +571,44 @@ function findMinRotated(nums) { }
 
 // Code:
 
-function searchRange(nums, target) { }
+function searchRange(arr, t) {
+    function findFirst() {
+        let l = 0;
+        let r = arr.length - 1;
+        let ans = -1;
+        while (l <= r) {
+            let m = Math.floor((l + r) / 2)
 
+            if (arr[m] >= t) {
+                if (arr[m] === t) ans = m;
+                r = m - 1
+            } else {
+                l = m + 1
+            }
+        }
+        return ans;
+    }
 
+    function findSecond() {
+        let l = 0;
+        let r = arr.length - 1;
+        let ans = -1;
+        while (l <= r) {
+            let m = Math.floor((l + r) / 2)
+
+            if (arr[m] <= t) {
+                if (arr[m] === t) ans = m;
+                l = m + 1
+            } else {
+                r = m - 1
+            }
+        }
+        return ans;
+    }
+    return [findFirst(),findSecond()]
+}
+
+console.log(searchRange([5, 7, 7, 8, 8, 10], 8))
 // Description:
 // Return the first and last index of the target in a sorted array.
 // If target does not exist, return [-1, -1].

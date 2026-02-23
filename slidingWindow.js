@@ -421,14 +421,4 @@ var divisorSubstrings = function (num, k) {
 
 
 
-var hasAllCodes = function (s, k) {
-    let set = new Set();
-
-    for (let i = 0; i <= s.length - k; i++) {
-        let sub = s.substring(i, i + k);
-        set.add(sub);
-    }
-
-    return set.size === (1 << k);
-};
 
